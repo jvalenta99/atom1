@@ -5,48 +5,9 @@
 	<meta charset="utf-8">
 	<script>
 
-var checkEingabe = function(wert) {
-	if(wert < 1 || isNaN( wert ) == true) {
-		return false
-	} else {
-		return true;
-	}
-
-}
-
-
-var hideElement = function( idElement){
-	document.getElementById( idElement ).className = 'page';
-}
-
-var showElement = function( idElement){
-	document.getElementById( idElement ).className = 'page page-visible';
-}
-
-var changeElement = function( idElement, visible) {
-	if (visible) {
-		showElement( idElement);
-	} else {
-		hideElement( idElement );
-	}
-}
-
-var changeToInputScreen = function() {
-
-	document.getElementById( 'feldCM' ).value = '';
-	document.getElementById( 'feldKG' ).value = '';
-	//document.getElementById( 'page-ausgabe' ).className = 'page';
-	//document.getElementById( 'page-eingabe' ).className = 'page page-visible';
-
-	changeElement( 'page-ausgabe', false);
-	changeElement( 'page-eingabe', true);
-
-}
 window.onload = function() {
 	//document.getElementById( 'page-eingabe' ).style.display = 'block';
-	//document.getElementById( 'page-eingabe' ).className = 'page page-visible';
-	//changeElement('page-eingabe', true);
-	changeToInputScreen();
+	document.getElementById( 'page-eingabe' ).className = 'page page-visible';
 
 	document.getElementById('btn-ausgabe').onclick = function( event ) {
 		event.preventDefault();
@@ -60,34 +21,27 @@ window.onload = function() {
 		gewichtKG = document.getElementById( 'feldKG' ).value * 1;
 
 		// Überprüfe ob Eingaben fehlerhaft sind, kleiner 1 oder keine Zahl
+		if ( groesseCM < 1 || isNaN( groesseCM ) == true ||
+			   gewichtKG < 1 || isNaN( gewichtKG ) == true ) {
 
-if (!checkEingabe ( groesseCM) || !checkEingabe( gewichtKG)){
-	if (!checkEingabe ( groesseCM)) {
-		document.getElementById( 'feldCM' ).className = 'error';
-	}
+				if ( groesseCM < 1 || isNaN( groesseCM ) == true ) {
+					document.getElementById( 'feldCM' ).className = 'error';
+				}
+				if ( gewichtKG < 1 || isNaN( gewichtKG ) == true ) {
+					document.getElementById( 'feldKG' ).className = 'error';
+				}
 
-	if (!checkEingabe ( gewichtKG)) {
-		document.getElementById( 'feldKG' ).className = 'error';
-	}
-
-
-
-}
-
-		 else {
+		} else {
 
 			// alles OK
 			bmi = gewichtKG / Math.pow( groesseCM/100 , 2);
 			bmi = Math.round( bmi*10 ) / 10; // auf eine Kommastelle runden
 
-			//document.getElementById( 'page-eingabe' ).className = 'page';
-			//document.getElementById( 'page-ausgabe' ).className = 'page page-visible';
-
-			changeElement( 'page-eingabe', false);
-			changeElement( 'page-ausgabe', true);
+			document.getElementById( 'page-eingabe' ).className = 'page';
+			document.getElementById( 'page-ausgabe' ).className = 'page page-visible';
 
 			ausgabe =  '<div id="grafik">';
-			ausgabe += '<img src="bmi_tabelle.gif">';
+			ausgabe += '<img src="d2-res/bmi_tabelle.gif">';
 			ausgabe += '<span id="marker">X</span>';
 			ausgabe += '</div>';
 			ausgabe += 'Dein BMI ist: '+bmi;
@@ -102,7 +56,13 @@ if (!checkEingabe ( groesseCM) || !checkEingabe( gewichtKG)){
 
 	}
 
-	document.getElementById('btn-eingabe').onclick = changeToInputScreen;
+	document.getElementById('btn-eingabe').onclick = function() {
+
+		document.getElementById( 'feldCM' ).value = '';
+		document.getElementById( 'feldKG' ).value = '';
+		document.getElementById( 'page-ausgabe' ).className = 'page';
+		document.getElementById( 'page-eingabe' ).className = 'page page-visible';
+	}
 
 }
 /*
