@@ -4,13 +4,51 @@
  <title>
  </title>
  <meta charset="utf-8">
- <script>
+ <script> <!-- ############# script ################## -->
+
+ var hideElement = function( idElement){
+ 	document.getElementById( idElement ).className = 'page';
+ }
+
+ var showElement = function( idElement){
+ 	document.getElementById( idElement ).className = 'page page-visible';
+ }
+
+ var changeElement = function( idElement, visible) {
+ 	if (visible) {
+ 		showElement( idElement);
+ 	} else {
+ 		hideElement( idElement );
+ 	}
+ }
+
+ var changeToInputScreen = function() {
+
+ 	document.getElementById( 'feldCM' ).value = '';
+ 	document.getElementById( 'feldKG' ).value = '';
+ 	//document.getElementById( 'page-ausgabe' ).className = 'page';
+ 	//document.getElementById( 'page-eingabe' ).className = 'page page-visible';
+
+ 	changeElement( 'page-ausgabe', false);
+ 	changeElement( 'page-eingabe', true);
+
+ }
+
+window.onload = function() {
+
+}
 
  </script>
- <script >
 
- </script>
- <style>
+ <style> <!-- ############# script ################## -->
+  body, button, input {font:20px Arial; }
+  section.page-visible { display:block; }
+  .page { display:none; width:598px; height:398px; border:1px solid #000; margin:10px;
+		padding:1px; /* wegen collapsing margins! */
+	}
+  form { padding:50px; line-height:2; }
+  button { cursor:pointer; }
+
 
  </style>
 </head>
@@ -24,7 +62,7 @@
       <button id="run-test">Raten</button>
   	</form>
   </section>
-  <section>
+  <section id=page-winn class="page">
     <h1>Gratulation, du hast die Zahl erfolgreich geraten!</h1>
     <button>Neues Spiel</button>
   </section>
