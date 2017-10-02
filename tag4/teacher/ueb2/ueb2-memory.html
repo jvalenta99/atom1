@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<script>
+	var voc = [
+			['dog','Hund'],
+			['cat','Katze'],
+			['snake','Schlange'],
+			['lion','Löwe'],
+			['mouse','Maus'],
+			['bug','Käfer'],
+			['ant','Ameise'],
+			['horse','Pferd'],
+	    ['cow','Kuh'],
+	    ['sheep','Schaf']
+		];
+
+	var zufallsZahl = function( von, bis ) {
+		var number;
+		number = Math.floor( Math.random() * (bis-von+1) ) + von;
+		return number;
+	}
+
+	var deleteValueFromArray = function( value ) {
+		zahlen.splice( zahlen.indexOf( value ), 1 );
+	}
+
+	var zelleKlicken = function() {
+
+	}
+
+	window.onload = function() {
+
+		var html, i, table, tr, td;
+
+		table = document.createElement( 'table' );
+		//table.setAttribute( 'border', 1);
+		//e( 'ausgabe' ).appendChild( table );
+
+		for ( i=1; i<=25; i++ ) {
+
+			/*if ( i%6 == 1 ) {
+				tr = document.createElement( 'tr' );
+				table.appendChild( tr );
+			}
+			td = document.createElement( 'td' );
+			//alleZellen.push( td );
+			//td.setAttribute( 'id', 'zelle'+i );
+			td.onclick = zelleKlicken;
+			td.innerHTML = i;
+			tr.appendChild( td );*/
+			fl=document.createElement('div');
+			fl.classList.add('flipper');
+			e( 'game' ).appendChild( fl );
+
+		}
+
+	}
+
+
+</script>
+	<style>
+		#game { width:600px; border:1px solid #000; padding:1px; background:#ddd; font-family:Arial; }
+		#game .flipper { float:left;width:100px; height:100px; position:relative; margin:10px; }
+		#game .flipper div { transition:transform 1s; position:absolute; top:0; left:0; backface-visibility: hidden; width:100px; height:100px; border:1px solid #000; background:#fff; text-align:center; line-height:95px; }
+		#game::after { content:''; display:block; clear:left;  }
+		#game .flipper { perspective: 1000; }
+		#game div > div:nth-child(1) { transform: rotateY(180deg); }
+		#game div > div:nth-child(2) { transform: rotateY(0deg); background:#aaa; color:#fff;  }
+		#game div.flipped { }
+		#game div.flipped  > div:nth-child(1) { transform: rotateY(0deg); }
+		#game div.flipped  > div:nth-child(2) { transform: rotateY(180deg); }
+		#game div.done > div:nth-child(1)  { transition:all 0.5s; background-color: green; transform:rotateY(0deg) scale(0.9); }
+		</style>
+</head>
+<body>
+	<div id="game">
+		<!-- Inhalte dynamisch erzeugen -->
+		<div class="flipper">
+			<div>FRONT</div>
+			<div>BACK</div>
+		</div>
+		<div class="flipper">
+			<div>FRONT</div>
+			<div>BACK</div>
+		</div>
+		<div class="flipper">
+			<div>FRONT</div>
+			<div>BACK</div>
+		</div>
+		<div class="flipper">
+			<div>FRONT</div>
+			<div>BACK</div>
+		</div>
+		<div class="flipper">
+			<div>FRONT</div>
+			<div>BACK</div>
+		</div>
+		<div class="flipper">
+			<div>FRONT</div>
+			<div>BACK</div>
+		</div>
+		<div class="flipper">
+			<div>FRONT</div>
+			<div>BACK</div>
+		</div>
+		<div class="flipper">
+			<div>FRONT</div>
+			<div>BACK</div>
+		</div>
+	</div>
+</body>
+</html>
