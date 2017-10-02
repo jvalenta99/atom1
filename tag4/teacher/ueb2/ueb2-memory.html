@@ -3,6 +3,7 @@
 <head>
 	<title></title>
 	<meta charset="utf-8">
+	<script src="wifi.funktionen.js"></script>
 	<script>
 	var voc = [
 			['dog','Hund'],
@@ -17,6 +18,20 @@
 	    ['sheep','Schaf']
 		];
 
+	var verteilen = function (n)	{
+		var zufStart = [];
+		for (var i = 0; i < n; i++) {
+			for (var j = 0; j < array.length; j++) {
+				if (isNaN(zufStart[j]){
+					zufStart[j]=voc[]
+				}
+			}
+
+			var temp=zufallsZahl(0,n);
+			if
+		}
+	}
+
 	var zufallsZahl = function( von, bis ) {
 		var number;
 		number = Math.floor( Math.random() * (bis-von+1) ) + von;
@@ -28,37 +43,27 @@
 	}
 
 	var zelleKlicken = function() {
-
+		console.log('wurde geklickt');
+		this.classList.toggle("flipped");
 	}
 
 	window.onload = function() {
+		var fl;
 
-		var html, i, table, tr, td;
+		for ( var i=1; i<=25; i++ ) {
 
-		table = document.createElement( 'table' );
-		//table.setAttribute( 'border', 1);
-		//e( 'ausgabe' ).appendChild( table );
 
-		for ( i=1; i<=25; i++ ) {
-
-			/*if ( i%6 == 1 ) {
-				tr = document.createElement( 'tr' );
-				table.appendChild( tr );
-			}
-			td = document.createElement( 'td' );
-			//alleZellen.push( td );
-			//td.setAttribute( 'id', 'zelle'+i );
-			td.onclick = zelleKlicken;
-			td.innerHTML = i;
-			tr.appendChild( td );*/
 			fl=document.createElement('div');
 			fl.classList.add('flipper');
+			fl.appendChild(document.createElement( 'div' ));
+			fl.appendChild(document.createElement( 'div' ));
+			fl.childNodes[0].innerHTML='prvni div';
+			fl.childNodes[1].innerHTML='druhej div';
+			//fl.childNodes[0].onclick = zelleKlicken;
+			fl.onclick = zelleKlicken;
 			e( 'game' ).appendChild( fl );
-
 		}
-
 	}
-
 
 </script>
 	<style>
@@ -77,39 +82,16 @@
 </head>
 <body>
 	<div id="game">
-		<!-- Inhalte dynamisch erzeugen -->
-		<div class="flipper flipped" >
+		<div class="flipper" >
 			<div>FRONT</div>
 			<div>BACK</div>
-		</div>
-		<div class="flipper">
+		<!-- Inhalte dynamisch erzeugen
+		<div class="flipper" >
 			<div>FRONT</div>
-			<div>BACK</div>
-		</div>
-		<div class="flipper">
-			<div>FRONT</div>
-			<div>BACK</div>
-		</div>
-		<div class="flipper">
-			<div>FRONT</div>
-			<div>BACK</div>
-		</div>
-		<div class="flipper">
-			<div>FRONT</div>
-			<div>BACK</div>
-		</div>
-		<div class="flipper">
-			<div>FRONT</div>
-			<div>BACK</div>
-		</div>
-		<div class="flipper">
-			<div>FRONT</div>
-			<div>BACK</div>
-		</div>
-		<div class="flipper">
-			<div>FRONT</div>
-			<div>BACK</div>
-		</div>
+			<div>BACK</div>-->
 	</div>
+
+
+
 </body>
 </html>
